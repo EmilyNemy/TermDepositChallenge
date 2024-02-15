@@ -1,3 +1,5 @@
+package org.termdeposit;
+
 public class TermDeposit {
     private double principal;
     private double interest;
@@ -10,12 +12,16 @@ public class TermDeposit {
         this.term = term;
     }
 
-    public double calculateCompoundInterest(int interestPeriod) {
+    public double calculateCompoundInterest(InterestPeriod interestPeriod) {
         double interestValue = interest / 100;
-        double value = 1 + interestValue/1;
-        if (interestPeriod == 1){
-           return principal + (principal * (Math.pow(value, (interestPeriod * term)) - 1));
-        }
-        return  principal + (principal * interestValue * term);
+        double value = 1 + interestValue/interestPeriod.getCompoundPeriod();
+
+        return switch (interestPeriod) {
+            case AT_MATURITY -> principal + (principal * interestValue * term);
+            case ANNUALLY, QUARTERLY->
+                    principal + (principal * (Math.pow(value, (interestPeriod.getCompoundPeriod() * term)) - 1));
+            default -> throw new UnsupportedOperationException("Invalid interest Period: " + interestPeriod);
+        };
+
     }
 }
