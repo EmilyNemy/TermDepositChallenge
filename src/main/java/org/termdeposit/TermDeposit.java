@@ -18,7 +18,7 @@ public class TermDeposit {
 
         return switch (interestPeriod) {
             case AT_MATURITY -> principal + (principal * interestValue * term);
-            case ANNUALLY, QUARTERLY->
+            case ANNUALLY, QUARTERLY, MONTHLY->
                     principal + (principal * (Math.pow(value, (interestPeriod.getCompoundPeriod() * term)) - 1));
             default -> throw new UnsupportedOperationException("Invalid interest Period: " + interestPeriod);
         };
