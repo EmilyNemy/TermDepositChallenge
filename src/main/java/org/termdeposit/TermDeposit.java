@@ -12,6 +12,10 @@ public class TermDeposit {
 
     public double calculateCompoundInterest(int interestPeriod) {
         double interestValue = interest / 100;
+        double value = 1 + interestValue/1;
+        if (interestPeriod == 1){
+           return principal + (principal * (Math.pow(value, (interestPeriod * term)) - 1));
+        }
         return  principal + (principal * interestValue * term);
     }
 }

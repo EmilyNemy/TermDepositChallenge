@@ -7,4 +7,12 @@ public class TermDepositTest {
         TermDeposit termdeposit = new TermDeposit(10000,1.10, 3);
         Assertions.assertEquals(10330.00, termdeposit.calculateCompoundInterest(1));
     }
+
+    @Test
+    public void testInterestAnnually(){
+        TermDeposit termdeposit = new TermDeposit(10000, 1.10, 3);
+        Assertions.assertEquals(10334.00, Math.round(termdeposit.calculateCompoundInterest(1)));
+    }
+
+
 }
