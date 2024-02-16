@@ -10,9 +10,15 @@ use command
 
 ### How to run the program
 
-Using gradle enter the following values
+Using gradle to run the program. Enter the following values.
 
 `gradle run --args="10000 1.10 3 AT_MATURITY"`  
+
+The first argument is the principal or deposit, the second is the interest rate, the third is the investment term, and the fourth
+is the interest period one might be interested in e.g Annually, quarterly, monthly, and at maturity.
+Other examples include
+
+`gradle run --args="13000 3.2 3 MONTHLY"`
 
 ### Design decisions
 

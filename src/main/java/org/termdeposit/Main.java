@@ -25,7 +25,7 @@ public class Main {
         }
 
         TermDeposit termDeposit = new TermDeposit(principal, interest, term);
-        double finalBalance = termDeposit.calculateCompoundInterest(InterestPeriod.valueOf(interestPeriod));
+        int finalBalance = (int)termDeposit.calculateCompoundInterest(InterestPeriod.valueOf(interestPeriod));
 
         System.out.println("===============");
         System.out.println("Value will be " + finalBalance + " at the end of " + term + " years");

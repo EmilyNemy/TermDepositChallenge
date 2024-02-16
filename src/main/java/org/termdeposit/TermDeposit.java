@@ -1,13 +1,14 @@
 package org.termdeposit;
 
+
 public class TermDeposit {
     private double principal;
     private double interest;
     private int term;
 
 
-    public TermDeposit(double prinicipal, double interest, int term) {
-        this.principal = prinicipal;
+    public TermDeposit(double principal, double interest, int term) {
+        this.principal = principal;
         this.interest = interest;
         this.term = term;
     }
