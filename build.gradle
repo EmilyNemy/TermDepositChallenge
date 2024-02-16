@@ -22,4 +22,7 @@ tasks.register('runMain', JavaExec) {
     description = "Runs the main method in org.termdeposit package"
     main = "org.termdeposit.Main" // Assuming the main class is named Main in the org.termdeposit package
     classpath = sourceSets.main.runtimeClasspath
+
+    // Pass command-line arguments to the JavaExec task
+    args = project.hasProperty('args') ? project.args.split(' ') : []
 }
