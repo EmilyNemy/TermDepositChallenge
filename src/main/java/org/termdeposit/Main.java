@@ -23,9 +23,14 @@ public class Main {
             System.out.println("Invalid interest period. Please enter one of the valid options: MONTHLY, QUARTERLY, ANNUALLY, AT_MATURITY");
             return;
         }
+        int finalBalance = 0;
 
-        TermDeposit termDeposit = new TermDeposit(principal, interest, term);
-        int finalBalance = (int)termDeposit.calculateCompoundInterest(InterestPeriod.valueOf(interestPeriod));
+        try{
+            TermDeposit termDeposit = new TermDeposit(principal, interest, term);
+            finalBalance = (int)termDeposit.calculateCompoundInterest(InterestPeriod.valueOf(interestPeriod));
+        }catch (Exception e){
+            System.out.print(e.getMessage());
+        }
 
         System.out.println("===============");
         System.out.println("Value will be " + finalBalance + " at the end of " + term + " years");

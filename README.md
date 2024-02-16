@@ -18,7 +18,7 @@ The first argument is the principal or deposit, the second is the interest rate,
 is the interest period one might be interested in e.g Annually, quarterly, monthly, and at maturity.
 Other examples include
 
-`gradle run --args="13000 3.2 3 MONTHLY"`
+`gradle run --args="-13000 3.2 3 MONTHLY"`
 
 ### Design decisions
 
@@ -26,15 +26,15 @@ Other examples include
 - For simplicity the money is taken as a double
 - Use an enum for the interest period and also allocate each interest period with a compound period which indicates the
 number of times the interest is calculated. (Information got from https://www.investopedia.com/articles/investing/020614/learn-simple-and-compound-interest.asp)
-_________________________________________________
-| Compounding frequency | No. compounding periods|
-_________________________________________________
-|  Annually             | 1                      |
-__________________________________________________
-| Quarterly              | 4                      |
-_________________________________________________
-| Monthly               | 12                     |
-_________________________________________________
+
+| Compounding frequency | No. compounding periods |
+|----------------------|-------------------------|
+| Annually             | 1                       |
+| Quarterly            | 4                       |
+| Monthly              | 12                      |
+| At maturity          | 1                      |
+
 
 ### Improvements
 - Use BigDecimal to store money
+- Add checks for negative numbers entered

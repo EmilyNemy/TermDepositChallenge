@@ -36,4 +36,18 @@ public class TermDepositTest {
         Exception exception = assertThrows(UnsupportedOperationException.class, () -> termDeposit.calculateCompoundInterest(InterestPeriod.INVALID));
         Assertions.assertEquals("Invalid interest Period: INVALID", exception.getMessage());
     }
+
+    @Test
+    public void testNegativePrincipal(){
+        TermDeposit termDeposit = new TermDeposit(-10000, 1.10, 3);
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> termDeposit.calculateCompoundInterest(InterestPeriod.MONTHLY));
+        Assertions.assertEquals("The principal, investment term, or interest cannot be negative", exception.getMessage());
+    }
+
+    @Test
+    public void testNegativeInvestmentTerm(){
+        TermDeposit termDeposit = new TermDeposit(10000, -1.10, -3);
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> termDeposit.calculateCompoundInterest(InterestPeriod.MONTHLY));
+        Assertions.assertEquals("The principal, investment term, or interest cannot be negative", exception.getMessage());
+    }
 }
